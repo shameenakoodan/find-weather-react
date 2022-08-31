@@ -1,16 +1,34 @@
+import './WeatherCard.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWind,faArrowUp,faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
-const WeatherCard = (props)=>{
-    const {currentWeather,toggleDisplay} = props;
+const WeatherCard = (props) => {
+    const { currentWeather, toggleDisplay } = props;
+    const iconurl = "http://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png";
     return (
         <div className="weather-card">
-            <p> City Name : {currentWeather.name}</p>
-            <p>Temperature : {currentWeather.main.temp}</p>
-            <p>Feels Like : {currentWeather.main.feels_like}</p>
-            <p>Description : {currentWeather.weather[0].main}</p>
-            <p>Wind :{currentWeather.wind.speed}</p>
-            <p>Pressure : {currentWeather.main.pressure}</p>
-            <p>High: {currentWeather.main.temp_max}</p>
-            <p>Low: {currentWeather.main.temp_min}</p>
+            <h3>Current Weather</h3>
+            <div className='weather-details'>
+                <div className='left-side'>
+                    <p>{currentWeather.name}</p>
+                    <img src={iconurl}/>
+                    <p>{currentWeather.weather[0].main}</p>                    
+                </div>
+                <div className='temp-class'>
+                    <p>{currentWeather.main.temp}&deg;F </p>
+                </div>
+                <div className='right-side'>
+                    <p>Feels Like {currentWeather.main.feels_like}&deg;</p>
+                    <p><FontAwesomeIcon icon={faWind} /> {currentWeather.wind.speed} miles/hr</p>
+                    <p>Pressure : {currentWeather.main.pressure}</p>
+                    <p><FontAwesomeIcon icon={faArrowUp} />  {currentWeather.main.temp_max}  
+                       <FontAwesomeIcon icon={faArrowDown} /> {currentWeather.main.temp_min}</p>                    
+                </div>
+
+            </div>
+
+
+
         </div>
     )
 }

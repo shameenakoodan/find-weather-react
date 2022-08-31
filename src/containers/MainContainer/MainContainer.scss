@@ -1,0 +1,14 @@
+.main-class h3{
+    text-align: left;
+    color: grey;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 5px;
+    padding-right: 3px;
+    height: 3rem;
+    background: white;
+    border-radius: 20px;
+}
