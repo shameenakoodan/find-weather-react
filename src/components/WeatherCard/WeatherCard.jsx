@@ -24,7 +24,6 @@ const WeatherCard = (props) => {
                     <p><FontAwesomeIcon icon={faArrowUp} />  {currentWeather.main.temp_max}  
                        <FontAwesomeIcon icon={faArrowDown} /> {currentWeather.main.temp_min}</p>                    
                 </div>
-
             </div>
 
 
