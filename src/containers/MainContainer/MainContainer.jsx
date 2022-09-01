@@ -11,11 +11,7 @@ const MainContainer = () => {
     const [historyData, setHistoryData] = useState([]);
 
     const [isDisplayed, setisDisplayed] = useState(false);
-    const toggleDisplay = () => {
-        setisDisplayed(!isDisplayed);
-    }
-    // let lat = 0.0;
-    // let lon= 0.0;
+    const [displayHistory,setdisplayHistory] = useState(false);
 
     const findtheWeather = (event) => {
         const appid = '07765a8cf9d1978f1eeb9cad04e25eae'
@@ -52,7 +48,6 @@ const MainContainer = () => {
                         body: JSON.stringify(newWeather)
                     }).then(() => {
                         console.log("New Weather Added");
-
                     });
                     ///Check the database for the city id
                     fetch(`http://localhost:3002/api/weather/cityid/${currentWeather.id}`)
@@ -60,12 +55,11 @@ const MainContainer = () => {
                             return res.json()
                         })
                         .then((data) => {
-                            // console.log(data);
-                            setisDisplayed(true);
                             setHistoryData(data);
+                            setdisplayHistory(true);
                             if (data.id === currentWeather.city_num) {
                                 console.log("Found in db");
-
+                                
                             }
                             else {
                                 console.log('not found in the db');
@@ -73,17 +67,6 @@ const MainContainer = () => {
                         })
                 }
             });
-    }
-    //Check the database if there is any historic data
-    const checkMydatabase = (id) => {
-        fetch(`http://localhost:3002/api/weather/cityid/${id}`)
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                return data;
-            })
-
     }
     const handleChange = (event) => {
         setSearchKey(event.target.value);
@@ -94,9 +77,9 @@ const MainContainer = () => {
                 <SearchBox handleChange={handleChange} />
                 <Button title={"Search"} handleClick={findtheWeather} />
             </div>
-            {isDisplayed && <WeatherCard currentWeather={currentWeather} toggleDisplay={toggleDisplay} />}
+            {isDisplayed && <WeatherCard currentWeather={currentWeather}  />}
             <div>
-                {isDisplayed && <WeatherHistory historyData={historyData} />}
+                {displayHistory && <WeatherHistory historyData={historyData} />}
             </div>
 
         </div>

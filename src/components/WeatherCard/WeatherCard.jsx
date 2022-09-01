@@ -21,8 +21,8 @@ const WeatherCard = (props) => {
                     <p>Feels Like {currentWeather.main.feels_like}&deg;</p>
                     <p><FontAwesomeIcon icon={faWind} /> {currentWeather.wind.speed} miles/hr</p>
                     <p>Pressure : {currentWeather.main.pressure}</p>
-                    <p><FontAwesomeIcon icon={faArrowUp} />  {currentWeather.main.temp_max}  
-                       <FontAwesomeIcon icon={faArrowDown} /> {currentWeather.main.temp_min}</p>                    
+                    <p><FontAwesomeIcon icon={faArrowUp} />  {currentWeather.main.temp_max}&deg;F 
+                       <FontAwesomeIcon icon={faArrowDown} /> {currentWeather.main.temp_min}&deg;F   </p>                    
                 </div>
             </div>
 

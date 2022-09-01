@@ -4,7 +4,7 @@ import './WeatherHistory.scss';
 
 const WeatherHistory = (props)=>{
     const {historyData} = props;
-    console.log("Data history"+props.historyData);
+    //console.log("Data history"+props.historyData);
     const weatherDetails = historyData.map((weather)=>{
         return (
         <div key={weather.id}>
