@@ -4,13 +4,15 @@ import { faClock,faWind,faCalendarDays} from '@fortawesome/free-solid-svg-icons'
 
 const HistoryCards = (props) => {
     const { weather } = props;
+
+    //Extract date from the sql date
     const date = new Date(weather.createdAt).toLocaleDateString("en-US");
+    //Extract time from the sql date
 
-    var time = new Date(1504095567183).toLocaleTimeString("en-US")
-
-
+    var time = new Date(weather.createdAt).toLocaleTimeString("en-US")
     return (
         <div className="history-card">
+            <p>{weather.city_name}</p>
             <p><FontAwesomeIcon icon={faCalendarDays} />{date}</p>
             <p><FontAwesomeIcon icon={faClock} />{time}</p>
             <p>{weather.temperature}&deg;F</p>
